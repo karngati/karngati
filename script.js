@@ -1,8 +1,20 @@
+const resultField = document.querySelector('.resultField');
+const howMany = document.querySelector('.howMany');
 const requestAdd = document.querySelector('.requestAdd');
-const pastResults = document.querySelector('.pastResults');
+const requestReset = document.querySelector('.requestReset');
+const requestCopy = document.querySelector('.requestCopy');
+
+howMany.focus();
+
 function addResult() {
-  pastResults.textContent += genSyl() + "\n";
+  let times = howMany.value;
+  for (let i = 0; i < times; i++) {
+    let para = document.createElement('p');
+    para.textContent += genSyl();
+    resultField.appendChild(para);
+  }
 }
+
 function genSyl() {
   let syllable = genCoda();
   syllable = genV() + syllable;
@@ -99,3 +111,26 @@ function genOnset() {
 }
 
 requestAdd.addEventListener('click', addResult);
+
+function deleteResult() {
+  let answer = confirm("生成履歴を削除しますか？");
+  if (answer) {
+    while (resultField.firstChild) {
+      resultField.removeChild(resultField.firstChild);
+    }
+  }
+}
+
+requestReset.addEventListener('click', deleteResult);
+
+function copyResult() {
+  let ptag = resultField.childNodes;
+  let range = document.createRange();
+  range.selectNodeContents(range);
+  let selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  alert("copied");
+}
+
+requestCopy.addEventListener('click', copyResult);
