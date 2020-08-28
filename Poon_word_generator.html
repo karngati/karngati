@@ -11,17 +11,11 @@
       font-family: sans-serif;
     }
 
-    body {
-      width: 50%;
-    }
+    body {}
 
     .resultField {
       margin-block-start: 1em;
-    }
-
-    .resultField p {
-      margin-block-start: 0em;
-      margin-block-end: 0em;
+      font-family: sans-serif;
     }
   </style>
 </head>
@@ -32,13 +26,16 @@
 
   <div class="forms">
     <label for="howMany">生成個数 </label><input type="number" id="howMany" class="howMany">
+    <label for="minSyl">最小音節数</label><input type="number" id="minSyl" class="minSyl">
+    <label for="maxSyl">最大音節数</label><input type="number" id="maxSyl" class="maxSyl">
     <input type="submit" value="生成" class="requestAdd">
     <input type="submit" value="削除" class="requestReset">
-    <input type="submit" value="結果をコピー" class="requestCopy">
-  </div>
+    <!-- <input type="submit" value="結果をコピー" class="requestCopy"> --!>
 
-  <div class="resultField">
-  </div>
+    </div>
+
+
+  <textarea class="resultField" , maxlength="15" , rows="1"></textarea>
 
   <script src="script.js"></script>
 
