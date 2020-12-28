@@ -23,13 +23,15 @@ function addResult() {
 
 function genWord(syllableNumber) {
   let word = "";
+  let sylData = { form: "", onsetType: 7 }
   for (let i = 0; i < syllableNumber; i++) {
-    word = genSyl() + word;
+    sylData = genSyl(sylData);
+    word = form + word;
   }
   return word;
 }
 
-function genSyl() {
+function genSyl(form, onsetType) {
   let syllable = genCoda();
   syllable = genV() + syllable;
   syllable = genOnset() + syllable;
