@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>カンジャマンジャ文字コンバーター</title>
+    <script type="text/javascript">
+
+      function convertktol(add) {
+        let str2 = add.replace(/["”]/g,"aa").replace(/[’']/g,"a").replace(/。/g,"e").replace(/_|＿/g,"i").replace(/]/g,"u").replace(/　+/g," ").replace(/<<|＜＜/g,".").replace(/><|＞＜/g,"?").replace(/\[/g,"o")
+        str2 = str2.replace(/＋|\+/g,"p").replace(/＊|\*/g,"t").replace(/｜|\|/g,"k").replace(/％|%/g,"ɸ").replace(/＃|#/g,"s").replace(/・/g,"h").replace(/〇/g,"m").replace(/＠|@/g,"n").replace(/：|:/g,"ŋ").replace(/∞/g,"l").replace(/＝|=/g,"r").replace(/￥/g,"w")
+
+        let str_split = str2.split("")
+        let ary = []
+        for(let i = 0; i < str_split.length;i++){
+          ary.push(str_split[i])
+        }
+        
+        for(let i = ary.length - 1; i >= 0; i--){
+          if(ary[i]=="o"){
+            ary.splice(i,1)
+            ary.splice(i+1,0,"o")
+          }
+        }
+
+        str2 = ary.join("").replace(/[＞＜><]o/g,"o").replace(/[＞＜><]/g,",")
+        return(str2)
+      }
+
+      function check(){
+        if(script_form.script.value == ""){
+          alert("空")
+        }else{
+          let msg = document.getElementById("msg");
+          msg.innerText = convertktol(script_form.script.value);
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>カンジャマンジャ文字→ラテン文字変換器</h1>
+    <form action="kanzjamanzja.html" method="get" name="script_form">
+      <input id="input" type="text" name="script">
+      <script>
+        document.getElementById("input").focus();
+        document.getElementById("input").onkeypress = (e) => {
+        const key = e.keyCode || e.charCode || 0;
+        if (key == 13) {
+          e.preventDefault();
+          }
+        }
+      </script>
+      <input type="button" value="変換" onclick="return check();">
+    </form>
+    <textarea id="msg">
+    </textarea>
+  </body>
+</html>
