@@ -1,6 +1,8 @@
 <html>
   <head>
     <title>カンジャマンジャ文字コンバーター</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <script type="text/javascript">
 
       function convertktol(add) {
@@ -25,32 +27,57 @@
       }
 
       function check(){
-        if(script_form.script.value == ""){
-          alert("空")
-        }else{
-          let msg = document.getElementById("msg");
-          msg.innerText = convertktol(script_form.script.value);
-        }
+        
+        let msg = document.getElementById("msg");
+        msg.innerText = convertktol(script_form.script.value);
+        
       }
-
     </script>
+
+    <style>
+      body{
+        margin-left: 5px;
+        margin-right: 5px;
+        max-width: 95%;
+      }
+      .textbox{
+        margin: 10px;
+        width: 100%;
+        max-width: 900px;
+        min-height: 2em;
+
+      }
+      .button{
+        margin-left: 10px;
+      }
+    </style>
   </head>
+
   <body>
     <h1>カンジャマンジャ文字→ラテン文字変換器</h1>
     <form action="kanzjamanzja.html" method="get" name="script_form">
-      <input id="input" type="text" name="script">
+      <input class="textbox" id="input" type="text" name="script">
       <script>
-        document.getElementById("input").focus();
-        document.getElementById("input").onkeypress = (e) => {
+        const input =document.getElementById("input"); 
+        input.focus();
+        input.onkeypress = (e) => {
         const key = e.keyCode || e.charCode || 0;
         if (key == 13) {
           e.preventDefault();
           }
         }
+
+        
       </script>
-      <input type="button" value="変換" onclick="return check();">
+      </br>
+      <input class="button" type="button" value="変換" onclick="return check();">
     </form>
-    <textarea id="msg">
+    <textarea class="textbox" id="msg">
     </textarea>
+    <script>
+        const msg = document.getElementById("msg");
+        msg.readOnly = true;
+        msg.addEventListener("focus", event => event.target.select())
+    </script>
   </body>
 </html>
