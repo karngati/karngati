@@ -32,6 +32,13 @@
         msg.innerText = convertktol(script_form.script.value);
         
       }
+
+      function deletetext(){
+        let txt = document.getElementById("input")
+        let msg = document.getElementById("msg");
+        txt.value = "";
+        msg.value = "";
+      }
     </script>
 
     <style>
@@ -71,6 +78,7 @@
       </script>
       </br>
       <input class="button" type="button" value="変換" onclick="return check();">
+      <input class="button" type="button" value="削除" onclick="return deletetext();"
     </form>
     <textarea class="textbox" id="msg">
     </textarea>
