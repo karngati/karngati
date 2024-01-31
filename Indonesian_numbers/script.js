@@ -5,7 +5,7 @@ document.addEventListener('keydown', (e) => { if (!e.repeat) keydown_event(e) })
 const showAnswerBtn = "<input type='button' id='showAnswer' value='show answer' onclick='pushShowAnswer()'>";
 const retryBtn = "<input type='button' id='retry' value='retry' onclick='pushRetry()'>";
 
-const baseL = ["ribu", "juta", "miliar", "triliun"]
+const baseL = ["", " ribu", " juta", " miliar", " triliun"]
 const baseS = ["puluh", "ratus"]
 const atom = ["", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"]
 const atom2 = ["", "se", "dua ", "tiga ", "empat ", "lima ", "enam ", "tujuh ", "delapan ", "sembilan "]
@@ -40,18 +40,21 @@ function under1000(num) {
     s.push(atom[num % 10]);
   }
 
-  return s;
+  return s.join(" ");
 }
 
 function numToIn(num) {
-  // let s = [];
-  // s.push(under1000(num));
-  return under1000(num).join(" ");
+  let s = [];
+  for (let i = 0; i < Math.floor(Math.log10(num) / 3) + 1; i++) {
+    s.unshift(under1000(Math.floor((num / 1000 ** i) % 1000)) + baseL[i]);
+  }
+
+  return s.join(" ");
 }
 
 //読み込み時またはretryボタンが押された時の処理
 function reflesh() {
-  answer = Math.floor(Math.random() * (999));
+  answer = Math.floor(Math.random() * (10 ** 9));
   document.getElementById("question").innerHTML = answer.toLocaleString('de-DE');
   document.getElementById("answer").innerHTML = "";
   state = true;
