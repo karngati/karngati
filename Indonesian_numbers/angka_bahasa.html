@@ -9,7 +9,7 @@
 		<script src="script.js"></script>
 	</head>
 
-	<body>
+	<body onload="reflesh()">
     <p>
       translate into Indonesian </br>
       terjemahkan ke dalam bahasa Indonesia</br>
@@ -17,8 +17,11 @@
     </p>		
     <div id="question"></div>
     <div id="answer"></div>
-    <input type="button" value="show answer" onclick="showAnswer()">
-    <input type="button" value="retry" onclick="reflesh()">
-		
+    
+    <div id="buttons">
+      <input type="button" id="showAnswer" value="show answer" onclick="pushShowAnswer()">
+      <input type="button" id="retry" value="retry" onclick="pushRetry()">
+    </div>
+
 	</body>
 </html>
