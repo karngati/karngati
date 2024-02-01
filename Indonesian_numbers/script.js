@@ -36,9 +36,9 @@ function under1000(num) {
       s.push("sepuluh");
       return s.join(" ");
     }
-
-    s.push(atom[num % 10]);
   }
+
+  s.push(atom[num % 10]);
 
   return s.join(" ");
 }
@@ -54,7 +54,7 @@ function numToIn(num) {
 
 //読み込み時またはretryボタンが押された時の処理
 function reflesh() {
-  answer = Math.floor(Math.random() * (10 ** 9));
+  answer = Math.floor(2 ** (1 / Math.random()));
   document.getElementById("question").innerHTML = answer.toLocaleString('de-DE');
   document.getElementById("answer").innerHTML = "";
   state = true;
