@@ -21,7 +21,7 @@ function keydown_event(e) {
 }
 
 function under1000(num) {
-  let s = [];
+  let s = [""];
   if (num > 99) {
     s.push(atom2[Math.floor(num / 100)] + "ratus");
   }
@@ -31,10 +31,10 @@ function under1000(num) {
       s.push(atom2[Math.floor((num % 100) / 10)] + "puluh");
     } else if (num % 100 > 10) {
       s.push(atom2[Math.floor(num % 10)] + "belas");
-      return s;
+      return s.join(" ");
     } else if (num % 100 == 10) {
       s.push("sepuluh");
-      return s;
+      return s.join(" ");
     }
 
     s.push(atom[num % 10]);
