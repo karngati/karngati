@@ -1,2 +1,2 @@
-# karngati.github.io
+# karngati
 個人用の雑多なレポジトリ
